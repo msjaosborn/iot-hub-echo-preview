@@ -21,11 +21,7 @@ module.exports = function (context, myEventHubTrigger) {
       console.log('Sending message: ' + message.getData() + 'to: ' + myEventHubTrigger.deviceId);
       client.send(myEventHubTrigger.deviceId, message, printResultFor('send'));
 
-     var eventProperties = new serverTelemetry.EventProperties();
-      eventProperties.name = "Device Message";
-      eventProperties.setProperty("DeviceId", myEventHubTrigger.deviceId);
-      eventProperties.setProperty("Message",message.getData());
-      logger.logEvent(eventProperties);
+
       }
       context.done();
     });

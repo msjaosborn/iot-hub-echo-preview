@@ -20,8 +20,6 @@ var connectionString = 'HostName=joiotpinghub.azure-devices.net;DeviceId=device1
 // fromConnectionString must specify a transport constructor, coming from any transport package.
 var client = Client.fromConnectionString(connectionString, Protocol);
 
-serverTelemetry.LogManager.initialize("b580d41bfdf1433d8e911329ad9bb72a-fb869890-603d-4b9e-91f5-606ff9dc8898-7408");
-
 var connectCallback = function (err) {
   if (err) {
     console.error('Could not connect: ' + err.message);
