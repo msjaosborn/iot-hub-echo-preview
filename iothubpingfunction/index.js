@@ -3,6 +3,9 @@ var Message = require('azure-iot-common').Message;
 var serverTelemetry = require("./aria-web-telemetry-nodejs-0.1.min.js");
 
 var connectionString = process.env.AzureIoTHubConnectionString;
+//var ariaToken = process.env.AriaToken;
+
+serverTelemetry.LogManager.initialize("b580d41bfdf1433d8e911329ad9bb72a-fb869890-603d-4b9e-91f5-606ff9dc8898-7408");
 var logger = new serverTelemetry.Logger();
  
 module.exports = function (context, myEventHubTrigger) {
