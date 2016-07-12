@@ -5,6 +5,13 @@ var serverTelemetry = require("./aria-web-telemetry-2.7.0.min.js");
 var connectionString = process.env.AzureIoTHubConnectionString;
 //var ariaToken = process.env.AriaToken;
 
+var configuration = new microsoft.applications.telemetry.LogConfiguration();
+var logConfigurationOverrides = new microsoft.applications.telemetry.LogConfigurationBrowserOverrides();
+logConfigurationOverrides.onSaveData = (key, value) => { /* ideally store this data so that it can persist on the device */};
+logConfigurationOverrides.onGetData = (key) => { return ""; };
+configuration.browserOverrides = logConfigurationOverrides;
+microsoft.applications.telemetry.LogManager.initialize("your tenant token", configuration);
+
 serverTelemetry.LogManager.__setCollectorUrlToInt();
 serverTelemetry.LogManager.initialize("d2b1b412df134fb5ab4938c22d65b3a2-b0b018ab-f7d2-48df-91e5-2e73ab2d96eb-7708");
 serverTelemetry.LogManager.addCallbackListener(checkStatusCallback);
