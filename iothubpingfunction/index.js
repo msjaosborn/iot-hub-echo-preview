@@ -1,6 +1,6 @@
 var Client = require('azure-iothub').Client;
 var Message = require('azure-iot-common').Message;
-var serverTelemetry = require("./aria-web-telemetry-nodejs-0.1.min.js");
+var serverTelemetry = require("./aria-web-telemetry-2.7.0.min.js");
 
 var connectionString = process.env.AzureIoTHubConnectionString;
 //var ariaToken = process.env.AriaToken;
