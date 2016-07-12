@@ -5,8 +5,20 @@ var serverTelemetry = require("./aria-web-telemetry-2.7.0.min.js");
 var connectionString = process.env.AzureIoTHubConnectionString;
 //var ariaToken = process.env.AriaToken;
 
-serverTelemetry.LogManager.initialize("b580d41bfdf1433d8e911329ad9bb72a-fb869890-603d-4b9e-91f5-606ff9dc8898-7408");
+serverTelemetry.LogManager.__setCollectorUrlToInt();
+serverTelemetry.LogManager.initialize("d2b1b412df134fb5ab4938c22d65b3a2-b0b018ab-f7d2-48df-91e5-2e73ab2d96eb-7708");
+serverTelemetry.LogManager.addCallbackListener(checkStatusCallback);
 var logger = new serverTelemetry.Logger();
+
+function checkStatusCallback(callbackType, responseCode, tenantToken, events) {
+    if (responseCode != 200 /* SEND_FAILED */) {
+        // Process error
+        console.log('failure: ' + responseCode);
+    } else {
+        // Event sent
+        console.log('success: ' + responseCode);
+    }
+}
  
 module.exports = function (context, myEventHubTrigger) {
 
