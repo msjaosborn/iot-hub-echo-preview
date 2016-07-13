@@ -1,19 +1,19 @@
 var Client = require('azure-iothub').Client;
 var Message = require('azure-iot-common').Message;
-var serverTelemetry = require("./aria-web-telemetry-2.7.0.min.js");
+var serverTelemetry = require("./aria-web-telemetry-nodejs-0.1.min.js");
 
 var connectionString = process.env.AzureIoTHubConnectionString;
 //var ariaToken = process.env.AriaToken;
 
-var configuration = new microsoft.applications.telemetry.LogConfiguration();
-var logConfigurationOverrides = new microsoft.applications.telemetry.LogConfigurationBrowserOverrides();
-logConfigurationOverrides.onSaveData = (key, value) => { /* ideally store this data so that it can persist on the device */};
-logConfigurationOverrides.onGetData = (key) => { return ""; };
-configuration.browserOverrides = logConfigurationOverrides;
-microsoft.applications.telemetry.LogManager.initialize("your tenant token", configuration);
+// var configuration = new microsoft.applications.telemetry.LogConfiguration();
+// var logConfigurationOverrides = new microsoft.applications.telemetry.LogConfigurationBrowserOverrides();
+// logConfigurationOverrides.onSaveData = (key, value) => { /* ideally store this data so that it can persist on the device */};
+// logConfigurationOverrides.onGetData = (key) => { return ""; };
+// configuration.browserOverrides = logConfigurationOverrides;
+// microsoft.applications.telemetry.LogManager.initialize("your tenant token", configuration);
 
-serverTelemetry.LogManager.__setCollectorUrlToInt();
-serverTelemetry.LogManager.initialize("d2b1b412df134fb5ab4938c22d65b3a2-b0b018ab-f7d2-48df-91e5-2e73ab2d96eb-7708");
+//serverTelemetry.LogManager.__setCollectorUrlToInt();
+serverTelemetry.LogManager.initialize("1c03120594b244b182ad5741609b0723-70676000-a26e-4b4a-b3e9-f8f3ca7e4b49-7242");
 serverTelemetry.LogManager.addCallbackListener(checkStatusCallback);
 var logger = new serverTelemetry.Logger();
 
@@ -44,7 +44,7 @@ module.exports = function (context, myEventHubTrigger) {
       client.send(myEventHubTrigger.deviceId, message, printResultFor('send'));
 
      var eventProperties = new serverTelemetry.EventProperties();
-      eventProperties.name = "Device Message";
+      eventProperties.name = "DeviceMessage";
       eventProperties.setProperty("DeviceId", myEventHubTrigger.deviceId);
       eventProperties.setProperty("Message",message.getData());
       logger.logEvent(eventProperties);
