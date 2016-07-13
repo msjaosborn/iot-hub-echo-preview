@@ -9,7 +9,9 @@ var serverTelemetry = require("./aria-web-telemetry-nodejs-0.1.min.js");
 //microsoft.applications.telemetry.LogManager.initialize("your tenant token", configuration);
 
 //serverTelemetry.LogManager.__setCollectorUrlToInt();
-serverTelemetry.LogManager.initialize("d2b1b412df134fb5ab4938c22d65b3a2-b0b018ab-f7d2-48df-91e5-2e73ab2d96eb-7708");//, configuration);
+//serverTelemetry.LogManager.initialize("d2b1b412df134fb5ab4938c22d65b3a2-b0b018ab-f7d2-48df-91e5-2e73ab2d96eb-7708");//, configuration);
+serverTelemetry.LogManager.initialize("1c03120594b244b182ad5741609b0723-70676000-a26e-4b4a-b3e9-f8f3ca7e4b49-7242");//, configuration);
+
 serverTelemetry.LogManager.addCallbackListener(checkStatusCallback);
 var logger = new serverTelemetry.Logger();
 
