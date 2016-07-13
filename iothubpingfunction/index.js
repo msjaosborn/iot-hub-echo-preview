@@ -13,7 +13,8 @@ var connectionString = process.env.AzureIoTHubConnectionString;
 // microsoft.applications.telemetry.LogManager.initialize("your tenant token", configuration);
 
 //serverTelemetry.LogManager.__setCollectorUrlToInt();
-serverTelemetry.LogManager.initialize("1c03120594b244b182ad5741609b0723-70676000-a26e-4b4a-b3e9-f8f3ca7e4b49-7242");
+serverTelemetry.LogManager.initialize("b580d41bfdf1433d8e911329ad9bb72a-fb869890-603d-4b9e-91f5-606ff9dc8898-7408");
+//serverTelemetry.LogManager.initialize("1c03120594b244b182ad5741609b0723-70676000-a26e-4b4a-b3e9-f8f3ca7e4b49-7242");
 serverTelemetry.LogManager.addCallbackListener(checkStatusCallback);
 var logger = new serverTelemetry.Logger();
 
