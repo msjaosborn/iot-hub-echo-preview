@@ -53,8 +53,8 @@ module.exports = function (context, myEventHubTrigger) {
         if (myEventHubTrigger.hasOwnProperty(property)) {
           context.log('Property: ' + property.name + ' value: ' + property);
           //eventProperties.setProperty(property.name, property);
-  //  }
-//}
+        }
+      }
       // eventProperties.setProperty("ClientId", myEventHubTrigger.clientId);
       // eventProperties.setProperty("SessionId", myEventHubTrigger.sessionId);
       // eventProperties.setProperty("Message",message.getData());
