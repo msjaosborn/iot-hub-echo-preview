@@ -47,11 +47,12 @@ module.exports = function (context, myEventHubTrigger) {
     //                 { key: key3.Value, value: value3.Value },
     //                 { key: key4.Value, value: value4.Value }]
     // });
+      context.log('Name: ' + myEventHubTrigger.name);
       eventProperties.name = myEventHubTrigger.name;
       context.log("Properties...");
       for (var property in myEventHubTrigger.message) {
         if (myEventHubTrigger.message.hasOwnProperty(property)) {
-          context.log('Property: ' + property.name + ' value: ' + property);
+          context.log('Property: ' + property + ' value: ' + myEventHubTrigger.message[property]);
           //eventProperties.setProperty(property.name, property);
         }
       }
