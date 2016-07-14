@@ -41,15 +41,28 @@ module.exports = function (context, myEventHubTrigger) {
         // Create a message and send it to the IoT Hub every second
       var data = JSON.stringify(myEventHubTrigger.message);
       var message = new Message(data);
-      console.log('Sending message: ' + message.getData() + 'to: ' + myEventHubTrigger.deviceId);
-      context.log('Sending message: ' + message.getData() + 'to: ' + myEventHubTrigger.deviceId);
+      context.log('Sending message: ' + message.getData() + ' to: ' + myEventHubTrigger.deviceId);
       client.send(myEventHubTrigger.deviceId, message, printResultFor('send'));
 
      var eventProperties = new serverTelemetry.EventProperties();
-      eventProperties.name = "DeviceMessage";
-      eventProperties.setProperty("DeviceId", myEventHubTrigger.deviceId);
-      eventProperties.setProperty("Message",message.getData());
-      logger.logEvent(eventProperties);
+    //     logger.logEvent({
+    //     name: eventName.Value,
+    //     properties: [{ key: key1.Value, value: value1.Value },
+    //                 { key: key2.Value, value: value2.Value },
+    //                 { key: key3.Value, value: value3.Value },
+    //                 { key: key4.Value, value: value4.Value }]
+    // });
+      eventProperties.name = myEventHubTrigger.name;
+      for (var property in myEventHubTrigger.message) {
+        if (eventProperties.hasOwnProperty(property)) {
+          context.log('Property: ' + property.name + ' value: ' + property);
+          //eventProperties.setProperty(property.name, property);
+    }
+}
+      // eventProperties.setProperty("ClientId", myEventHubTrigger.clientId);
+      // eventProperties.setProperty("SessionId", myEventHubTrigger.sessionId);
+      // eventProperties.setProperty("Message",message.getData());
+      // logger.logEvent(eventProperties);
 
       }
       context.done();
