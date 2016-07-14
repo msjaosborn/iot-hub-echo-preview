@@ -53,6 +53,7 @@ module.exports = function (context, myEventHubTrigger) {
     //                 { key: key4.Value, value: value4.Value }]
     // });
       eventProperties.name = myEventHubTrigger.name;
+      context.log("Properties...");
       for (var property in myEventHubTrigger) {
         if (myEventHubTrigger.hasOwnProperty(property)) {
           context.log('Property: ' + property.name + ' value: ' + property);
