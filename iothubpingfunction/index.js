@@ -30,7 +30,7 @@ function checkStatusCallback(callbackType, responseCode, tenantToken, events) {
  
 module.exports = function (context, myEventHubTrigger) {
     context.log("Hello there");
-    context.log(myEventHubTrigger);
+    context.log(myEventHubTrigger.toString());
 
     
         // Create a message and send it to the IoT Hub every second
