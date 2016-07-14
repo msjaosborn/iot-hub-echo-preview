@@ -30,6 +30,7 @@ function checkStatusCallback(callbackType, responseCode, tenantToken, events) {
  
 module.exports = function (context, myEventHubTrigger) {
 
+/*
     var client = Client.fromConnectionString(connectionString);
     
     client.open(function (err) {
@@ -68,6 +69,9 @@ module.exports = function (context, myEventHubTrigger) {
       }
       context.done();
     });
+    */
+    context.log("Hello there");
+    context.done();
 }
 
 // Helper function to print results in the console
