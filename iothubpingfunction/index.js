@@ -42,6 +42,7 @@ module.exports = function (context, myEventHubTrigger) {
       var data = JSON.stringify(myEventHubTrigger.message);
       var message = new Message(data);
       console.log('Sending message: ' + message.getData() + 'to: ' + myEventHubTrigger.deviceId);
+      context.log('Sending message: ' + message.getData() + 'to: ' + myEventHubTrigger.deviceId);
       client.send(myEventHubTrigger.deviceId, message, printResultFor('send'));
 
      var eventProperties = new serverTelemetry.EventProperties();
