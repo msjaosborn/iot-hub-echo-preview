@@ -53,13 +53,13 @@ module.exports = function (context, myEventHubTrigger) {
       for (var property in myEventHubTrigger.message) {
         if (myEventHubTrigger.message.hasOwnProperty(property)) {
           context.log('Property: ' + property + ' value: ' + myEventHubTrigger.message[property]);
-          //eventProperties.setProperty(property.name, property);
+          eventProperties.setProperty(property, myEventHubTrigger.message[property]);
         }
       }
       // eventProperties.setProperty("ClientId", myEventHubTrigger.clientId);
       // eventProperties.setProperty("SessionId", myEventHubTrigger.sessionId);
       // eventProperties.setProperty("Message",message.getData());
-      // logger.logEvent(eventProperties);
+       logger.logEvent(eventProperties);
 
    //   }
  //     context.done();
